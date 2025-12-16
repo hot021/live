@@ -1,0 +1,209 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>道家养生 | 免费资料与直播</title>
+    <!-- 引入 Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 设置 Inter 字体 -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f9fc; /* 极浅灰色背景 */
+        }
+        /* 自定义滚动条样式，增加美观度 */
+        .scroll-container::-webkit-scrollbar {
+            width: 8px;
+        }
+        .scroll-container::-webkit-scrollbar-thumb {
+            background-color: #cbd5e1;
+            border-radius: 4px;
+        }
+        .scroll-container::-webkit-scrollbar-track {
+            background: #f7f9fc;
+        }
+       .img-box {
+    display: flex;
+    gap: 10px;            /* 图片之间的间距 */
+  }
+ .img-box img {
+    width: 33.33%;
+    height: auto;
+    object-fit: cover;    /* 防止图片变形 */
+    border-radius: 8px;
+  }
+    </style>
+</head>
+<body>
+
+<div id="app" class="min-h-screen flex items-center justify-center p-4">
+    <!-- 主卡片容器，适应移动端宽度，桌面端居中且有限宽 -->
+    <div class="w-full max-w-lg bg-white shadow-xl rounded-2xl p-6 md:p-8 space-y-8">
+        
+        <!-- 核心钩子信息 -->
+        <header class="text-center space-y-4">
+            <h1 class="text-3xl md:text-4xl font-extrabold text-indigo-700">
+                限时福利，立即领取！
+            </h1>
+            <p class="text-xl md:text-2xl font-bold text-gray-800 leading-relaxed bg-yellow-100 p-3 rounded-xl border-4 border-yellow-300 shadow-md">
+                联系我们可以免费获得<span class="text-red-600">道家房中养生白话文手册和视频资料</span>，以及每晚有<span class="text-red-600">美女老师现场直播</span>！
+            	<div class="img-box"><img src="1.png">
+	<img src="2.png">
+	<img src="3.png"></div>
+            </p>
+            <p class="text-sm text-gray-500 font-medium">（名额有限，先到先得）</p>
+        </header>
+
+        <!-- 联系方式卡片容器 -->
+        <div class="space-y-6">
+
+            <!-- 微信联系方式 -->
+            <div class="bg-white border border-green-200 rounded-xl p-4 shadow-lg transition duration-300 hover:shadow-xl">
+                <h2 class="text-2xl font-bold text-green-600 mb-3 flex items-center justify-center">
+                    <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.5 13.5a1.5 1.5 0 0 1-3 0V12H9a3 3 0 0 1-3-3v-.5c0-.83.67-1.5 1.5-1.5h7c.83 0 1.5.67 1.5 1.5v4.5zm-1.5-6.5h-5a.5.5 0 0 0-.5.5v3.5a.5.5 0 0 0 .5.5h5a.5.5 0 0 0 .5-.5V9a.5.5 0 0 0-.5-.5z"/></svg>
+                    添加微信：扫码或复制ID
+                </h2>
+                
+                <!-- 二维码图片区域 -->
+                <div class="flex justify-center mb-4">
+                    <div class="w-48 h-48 bg-gray-100 border-4 border-green-400 rounded-lg p-1">
+                        <!-- 请将 [WECHAT_QR_CODE_URL] 替换为您的微信二维码图片链接 -->
+                        <img src="wechat.png" 
+                             alt="微信二维码" 
+                             class="w-full h-full object-cover rounded-md"
+                             onerror="this.onerror=null;this.src='https://placehold.co/400x400/EF4444/ffffff?text=QR+Image+Missing'">
+                    </div>
+                </div>
+
+                <!-- 复制微信号按钮 -->
+                <div class="text-center space-y-2">
+                    <p class="text-base text-gray-600 font-medium">我的微信号：<span id="wechat-id" class="text-green-700 font-extrabold select-all">XQYL76</span></p>
+                    <button onclick="copyToClipboard('wechat-id')" 
+                            class="w-full py-3 bg-green-500 text-white font-bold rounded-xl shadow-lg hover:bg-green-600 transition duration-150 transform hover:scale-[1.02] active:scale-95">
+                        一键复制微信号
+                    </button>
+                    <span id="wechat-copy-message" class="text-sm text-red-500 opacity-0 transition-opacity duration-300">复制成功！</span>
+                </div>
+            </div>
+
+            <!-- WhatsApp 联系方式 -->
+            <div class="bg-white border border-indigo-200 rounded-xl p-4 shadow-lg transition duration-300 hover:shadow-xl">
+                <h2 class="text-2xl font-bold text-indigo-600 mb-3 flex items-center justify-center">
+                    <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm3.2 14.8c-.2 0-.4-.1-.6-.2l-2.7-1.6c-.2-.1-.4-.2-.6-.2s-.4.1-.6.2l-2.7 1.6c-.2.1-.4.2-.6.2-.3 0-.6-.1-.8-.4-.1-.2-.1-.5 0-.7l2.7-1.6c.2-.1.4-.2.6-.2s.4.1.6.2l2.7 1.6c.2.1.3.4.3.7 0 .3-.1.6-.4.8zM12 4c.2 0 .4.1.6.2l2.7 1.6c.2.1.3.4.3.7 0 .3-.1.6-.4.8l-2.7 1.6c-.2.1-.4.2-.6.2s-.4-.1-.6-.2l-2.7-1.6c-.2-.1-.4-.4-.4-.7 0-.3.1-.6.4-.8l2.7-1.6c.2-.1.4-.2.6-.2zM12 10c.2 0 .4.1.6.2l2.7 1.6c.2.1.3.4.3.7 0 .3-.1.6-.4.8l-2.7 1.6c-.2.1-.4.2-.6.2s-.4-.1-.6-.2l-2.7-1.6c-.2-.1-.4-.4-.4-.7 0-.3.1-.6.4-.8l2.7-1.6c.2-.1.4-.2.6-.2z"/></svg>
+                    WhatsApp 联系方式
+                </h2>
+                
+                <!-- 二维码图片区域 -->
+                <div class="flex justify-center mb-4">
+                    <div class="w-48 h-48 bg-gray-100 border-4 border-indigo-400 rounded-lg p-1">
+                         <!-- 请将 [WHATSAPP_QR_CODE_URL] 替换为您的 WhatsApp 二维码图片链接 -->
+                        <img src="whats.png" 
+                             alt="WhatsApp二维码" 
+                             class="w-full h-full object-cover rounded-md"
+                             onerror="this.onerror=null;this.src='https://placehold.co/400x400/EF4444/ffffff?text=QR+Image+Missing'">
+                    </div>
+                </div>
+
+                <!-- 直接跳转链接 (适用于移动端) -->
+                <div class="text-center">
+                    <a href="https://wa.me/85246900911" target="_blank"
+                       class="inline-block w-full py-3 bg-indigo-600 text-white font-bold rounded-xl shadow-lg hover:bg-indigo-700 transition duration-150 transform hover:scale-[1.02] active:scale-95">
+                        点击直接进入 WhatsApp
+                    </a>
+                    <p class="text-sm text-gray-500 mt-2">+85246900911</p>
+                </div>
+            </div>
+
+        </div> <!-- 联系方式卡片容器结束 -->
+
+        <!-- 底部说明 -->
+        <footer class="text-center pt-4 border-t border-gray-100">
+            <p class="text-xs text-gray-400">
+                此优惠仅限通过 TikTok 渠道联系的用户。
+            </p>
+        </footer>
+
+    </div>
+</div>
+
+<script>
+    /**
+     * 复制文本到剪贴板，并显示成功提示
+     * @param {string} elementId - 包含要复制文本的元素的ID
+     */
+    function copyToClipboard(elementId) {
+        const textElement = document.getElementById(elementId);
+        const textToCopy = textElement.innerText || textElement.textContent;
+        const messageElement = document.getElementById(elementId.replace('-id', '-copy-message'));
+
+        // 现代浏览器使用 navigator.clipboard.writeText
+        if (navigator.clipboard) {
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                // 显示成功消息
+                showMessage(messageElement);
+            }).catch(err => {
+                // 如果失败（例如权限问题），回退到旧方法
+                fallbackCopy(textToCopy, messageElement);
+            });
+        } else {
+            // 不支持 navigator.clipboard 的浏览器，使用旧方法
+            fallbackCopy(textToCopy, messageElement);
+        }
+    }
+
+    /**
+     * 旧版复制方法：使用 execCommand
+     * @param {string} textToCopy - 要复制的文本
+     * @param {HTMLElement} messageElement - 提示消息元素
+     */
+    function fallbackCopy(textToCopy, messageElement) {
+        const textarea = document.createElement('textarea');
+        textarea.value = textToCopy;
+        // 样式设置使其不可见且不影响布局
+        textarea.style.position = 'fixed';
+        textarea.style.opacity = 0;
+        document.body.appendChild(textarea);
+        textarea.focus();
+        textarea.select();
+
+        try {
+            const successful = document.execCommand('copy');
+            if (successful) {
+                showMessage(messageElement);
+            } else {
+                // 仅在控制台显示错误，因为不能使用 alert()
+                console.error('Fallback: 复制命令失败');
+                messageElement.innerText = '复制失败，请手动复制。';
+                showMessage(messageElement);
+            }
+        } catch (err) {
+            console.error('Fallback: 无法执行复制操作', err);
+            messageElement.innerText = '复制失败，请手动复制。';
+            showMessage(messageElement);
+        } finally {
+            document.body.removeChild(textarea);
+        }
+    }
+    
+    /**
+     * 显示复制成功的提示信息
+     * @param {HTMLElement} element - 提示消息元素
+     */
+    function showMessage(element) {
+        element.classList.remove('opacity-0');
+        element.classList.add('opacity-100');
+        setTimeout(() => {
+            element.classList.remove('opacity-100');
+            element.classList.add('opacity-0');
+            // 复制成功后恢复默认文本
+            if (element.id === 'wechat-copy-message') {
+                element.innerText = '复制成功！';
+            }
+        }, 1500);
+    }
+</script>
+
+</body>
+</html>
